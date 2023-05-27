@@ -1,0 +1,13 @@
+# Given an integer numRows, return the first numRows of Pascal's triangle.
+# Input: numRows = 5 Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]] 
+def dp(numRows):
+    # creat a original array filled with 1
+    arr = [1] * numRows
+    for i in range(numRows):
+        # set every row: with the format of [1,*,*,*,*,1]
+        arr[i] = [1] * (i+1)
+        # iterate the middle digits
+        for j in range(1, i):
+            arr[i][j] = arr[i-1][j-1] + arr[i-1][j]
+    return arr
+print(dp(4)) # output: [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1]]
